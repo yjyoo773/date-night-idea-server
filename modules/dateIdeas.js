@@ -6,6 +6,7 @@ const FOOD_API_KEY = process.env.FOOD_API_KEY;
 
 function getLocation(req, res) {
   const { lat, lon } = req.query;
+  console.log(req.query);
   getLocation(lat, lon)
     .then(summaries => response.send(summaries))
     .catch((error) => {
@@ -18,7 +19,7 @@ function getLocation(req, res) {
 
 function dateHandler(req, res) {
   const key = 'getLocation-' + req.query.lat + req.query.lon;
-  const url = 'https://api.documenu.com/v2/restaurants/search/geo?lat={lat}&lon={lon}&distance=10&size=20&key={FOOD_API_KEY}'
+  const url = 'https://api.documenu.com/v2/restaurants/search/geo?lat={lat}&lon={lon}&distance=10&size=20&key={FOOD_API_KEY}';
 
 
   const queryParams = {
@@ -32,7 +33,6 @@ class Restaurant {
   constructor(val) {
       this.lat = lat,
       this.long = lon,
-      this.distance = distance,
       this.quizine = this.quizine
   };
 }
