@@ -9,6 +9,8 @@ class Restaurant {
     this.restaurant_phone= val.restaurant_phone,
     this.restaurant_website= val.restaurant_website,
     this.price_range= val.price_range,
+    this.cuisines=val.cuisines,
+    this.hours=val.hours,
     this.address= val.address
   };
 }
