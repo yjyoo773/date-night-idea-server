@@ -18,7 +18,11 @@ app.get("/", function (req, res) {
   res.send("hi!");
 });
 
-// app.get("/dateIdeas",dateHandler)
+
+const dateHandler = require('./modules/dateIdeas');
+
+app.get("/dateIdeas",dateHandler)
+
 
 // app.get("/user",User.getSomething)
 // app.post("/user",User.createSomething)
