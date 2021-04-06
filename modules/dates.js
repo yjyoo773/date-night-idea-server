@@ -6,10 +6,15 @@ const Dates = {};
 Dates.addDate = async (req, res) => {
   const email = req.query.email;
   const date = req.body;
+  console.log("from addDate", email, date);
   await User.findOne({ email }, (err, entry) => {
     if (err) return console.error(err);
+    if (!entry) console.error('user not found');
+
+    // console.log(entry);
     entry.dates.push(date);
     entry.save();
+    console.log("addDate saved", entry.dates);
     res.status(200).send(entry.dates);
   });
 };

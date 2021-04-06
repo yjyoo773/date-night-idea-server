@@ -10,12 +10,21 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 const PORT = process.env.PORT || 3002;
 
 // Modules ==========================================================================
 const dateHandler = require('./modules/dateIdeas');
 const Dates = require('./modules/dates')
 
+
+// Mongoose =========================================================================
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/test", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Routes  ==========================================================================
 app.get("/", function (req, res) {
