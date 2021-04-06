@@ -2,28 +2,32 @@
 
 const User = require("../models/user");
 const Dates = {};
+// User.collection.drop()
 
 Dates.addDate = async (req, res) => {
   const email = req.query.email;
-  const date = req.body;
+  const date = req.body.item;
   console.log("from addDate", email, date);
   await User.findOne({ email }, (err, entry) => {
     if (err) return console.error(err);
-    if (!entry) console.error('user not found');
-
-    // console.log(entry);
-    entry.dates.push(date);
-    entry.save();
-    console.log("addDate saved", entry.dates);
-    res.status(200).send(entry.dates);
+    if (!entry) {
+      let newUser = new User({ email: email, dates: date });
+      newUser.save();
+      res.status(200).send(newUser.dates);
+    } else {
+      entry.dates.push(date);
+      entry.save();
+      res.status(200).send(entry.dates);
+    }
   });
 };
 
 Dates.getDate = async (req, res) => {
   try {
     const email = req.query.email;
-    let items = await User.find({ email });
-    res.status(200).send(items[0].dates);
+    console.log("getDate",email)
+    // let items = await User.find({ email });
+    // res.status(200).send(items[0].dates);
   } catch (err) {
     console.error(err);
   }
