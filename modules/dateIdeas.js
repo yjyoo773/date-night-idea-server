@@ -16,7 +16,6 @@ class Restaurant {
 }
 
 function dateHandler(req, res) {
-  console.log(req.query);
   const { lat, lon } = req.query;
 
   const url = `https://api.documenu.com/v2/restaurants/search/geo`
@@ -26,12 +25,11 @@ function dateHandler(req, res) {
     lat: lat,
     lon: lon,
     distance: 10,
-    size: 20
+    size: 30
   };
   superagent.get(url).query(queryParams).then((results) => {
     let data = results.body.data;
     let restArr = data.map((rest) => new Restaurant(rest))
-    console.log(restArr);
     res.status(200).send(restArr);
   }) 
 }
