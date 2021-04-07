@@ -12,6 +12,7 @@ class Restaurant {
     this.cuisines=val.cuisines,
     this.hours=val.hours,
     this.address= val.address
+    this.rating = 0
   };
 }
 

@@ -16,7 +16,7 @@ const dateSchema = new mongoose.Schema({
   cuisines: { type: Array },
   hours: { type: String },
   address: { type: Object },
-  notes: { type: String },
+  rating: { type: Number },
 });
 
 const userSchema = new mongoose.Schema({
