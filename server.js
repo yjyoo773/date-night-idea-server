@@ -20,13 +20,30 @@ const dateHandler = require("./modules/dateIdeas");
 const Dates = require("./modules/dates");
 const Drinks = require("./modules/drinks")
 // Mongoose =========================================================================
+
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/test", {
-// mongoose.connect(process.env.MONGODB_URI, {
+const PASSWORD = process.env.PASSWORD
+console.log(process.env);
+
+const db= mongoose.connect(`mongodb+srv://newUser:${PASSWORD}@cluster0.dq1tt.mongodb.net/test?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+}).then (() => {
+  app.listen(PORT, () => console.log(`listening on ${PORT}`));
+  console.log('connected to the Database');
+}).catch ((e) =>{
+  console.log(e);
 });
+
+console.log(db);
+
+
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", function () {
+//   console.log("connected to the database!");
+// });
+
 
 // const client = new MongoClient(process.env.MONGODB_URI, {
 //   useNewUrlParser: true,
@@ -52,6 +69,10 @@ app.get("/drink", Drinks.getDrink);
 app.post("/drink", Drinks.addDrink);
 app.delete("/drink/:index", Drinks.deleteDrink );
 app.put("/drink/:index", Drinks.updateDrink);
+
+
+
+
 // STUFF NEEDED
 // get data from api (need to query location) => refer to city explorer
 
@@ -59,4 +80,4 @@ app.put("/drink/:index", Drinks.updateDrink);
 
 // ===========================================================================
 
-app.listen(PORT, () => console.log(`listening on ${PORT}`));
+

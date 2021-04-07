@@ -2,11 +2,12 @@
 
 const mongoose = require("mongoose");
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("connected to the database!");
-});
+// const db = mongoose.connection;
+
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", function () {
+//   console.log("connected to the database!");
+// });
 
 const dateSchema = new mongoose.Schema({
   restaurant_name: { type: String },
