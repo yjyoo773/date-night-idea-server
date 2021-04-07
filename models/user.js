@@ -19,9 +19,16 @@ const dateSchema = new mongoose.Schema({
   rating: { type: Number },
 });
 
+const drinkSchema = new mongoose.Schema({
+    drink_name: {type:String},
+    drink_img:{type:String},
+    drink_inst:{type:String}
+})
+
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   dates: [dateSchema],
+  drinks:[drinkSchema]
 });
 
 const User = mongoose.model("user", userSchema);
