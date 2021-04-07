@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3002;
 // Modules ==========================================================================
 const dateHandler = require("./modules/dateIdeas");
 const Dates = require("./modules/dates");
-
+const Drinks = require("./modules/drinks")
 // Mongoose =========================================================================
 const mongoose = require("mongoose");
 
@@ -48,6 +48,10 @@ app.post("/date", Dates.addDate);
 app.delete("/date/:index", Dates.deleteDate);
 app.put("/date/:index", Dates.updateDate);
 
+app.get("/drink", Drinks.getDrink);
+app.post("/drink", Drinks.addDrink);
+app.delete("/drink/:index", Drinks.deleteDrink );
+app.put("/drink/:index", Drinks.updateDrink);
 // STUFF NEEDED
 // get data from api (need to query location) => refer to city explorer
 
