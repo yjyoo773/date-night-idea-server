@@ -7,6 +7,7 @@ const Dates = {};
 Dates.addDate = async (req, res) => {
   const email = req.query.email;
   const date = req.body.item;
+  console.log("addDate",date)
   await User.findOne({ email }, (err, entry) => {
     if (err) return console.error(err);
     if (!entry) {

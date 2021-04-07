@@ -6,7 +6,7 @@ const Drinks = {};
 
 Drinks.addDrink = async (req, res) => {
   const email = req.query.email;
-  const drink = req.body.item;
+  const drink = req.body;
   await User.findOne({ email }, (err, entry) => {
     if (err) return console.error(err);
     if (!entry) {
@@ -15,6 +15,7 @@ Drinks.addDrink = async (req, res) => {
       res.status(200).send(newUser.drinks);
     } else {
       entry.drinks.push(drink);
+      console.log("addDrink", entry.drinks);
       entry.save();
       res.status(200).send(entry.drinks);
     }
