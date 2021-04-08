@@ -35,7 +35,7 @@ Drinks.getDrink = async (req, res) => {
 Drinks.updateDrink = async (req, res) => {
   const index = parseInt(req.params.index);
   const email = req.query.email;
-  const date = req.body.drink;
+  const drink = req.body.data;
   console.log("req.body is", drink);
   await User.findOne({ email }, (err, entry) => {
     if (err) return console.error(err);

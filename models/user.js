@@ -23,7 +23,8 @@ const dateSchema = new mongoose.Schema({
 const drinkSchema = new mongoose.Schema({
     drink_name: {type:String},
     drink_img:{type:String},
-    drink_inst:{type:String}
+    drink_inst:{type:String},
+    rating: { type: Number },
 })
 
 const userSchema = new mongoose.Schema({
